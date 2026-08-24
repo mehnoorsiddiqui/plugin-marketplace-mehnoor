@@ -1,0 +1,29 @@
+{
+  "name": "maxio-sdk",
+  "displayName": "Maxio SDK Assistant",
+  "version": "0.2.0",
+  "description": "Install and consume the Maxio Advanced Billing .NET SDK with a bundled, generated SDK map plus subagent orchestration — an integrate-maxio router, a map-grounded maxio-plan contract-sheet agent, and a map-first maxio-debug agent. Answers signatures, models, enums, and errors by map lookup and clones the SDK source only on first need. No MCP server.",
+  "author": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "license": "MIT",
+  "homepage": "https://www.apimatic.io",
+  "repository": "https://github.com/apimatic/plugin-marketplace",
+  "keywords": ["maxio", "advanced-billing", "chargify", "apimatic", "dotnet", "csharp", "sdk"],
+  "skills": [
+    "./skills/integrate-maxio",
+    "./skills/maxio-getting-started",
+    "./skills/dotnet-client-initialization",
+    "./skills/dotnet-authentication",
+    "./skills/dotnet-calling-endpoints",
+    "./skills/dotnet-models",
+    "./skills/dotnet-error-handling",
+    "./skills/dotnet-configuration-resilience",
+    "./skills/dotnet-testing"
+  ],
+  "agents": [
+    "./agents/maxio-plan.md",
+    "./agents/maxio-debug.md"
+  ]
+}

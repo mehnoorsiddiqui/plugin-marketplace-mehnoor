@@ -1,0 +1,50 @@
+﻿name: Language Request
+description: Request support for a new programming language across all available APIs
+title: "[Language Request]: <language name>"
+labels: ["language-request"]
+assignees: []
+projects: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request a new language to be added to the ContextMatic. Once added, all available APIs will surface SDK-generated context in that language.
+
+  - type: input
+    id: language
+    attributes:
+      label: Language
+      description: The programming language you would like supported (e.g., Swift, Kotlin, Rust).
+      placeholder: e.g., Swift
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this language to your work?
+      options:
+        - Nice to have
+        - Important - I would use this regularly
+        - Blocking - I cannot use the plugin without it
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Briefly describe what you are building and why this language matters for your API integration work.
+      placeholder: e.g., I am building an iOS app in Swift and want to integrate the Twilio API using the official SDK.
+    validations:
+      required: true
+
+  - type: textarea
+    id: sdk_reference
+    attributes:
+      label: Existing SDK or library (optional)
+      description: If APIMatic or the API provider already publishes an SDK for this language, link it here.
+      placeholder: e.g., https://github.com/twilio/twilio-swift
+    validations:
+      required: false
+

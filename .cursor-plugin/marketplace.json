@@ -1,0 +1,35 @@
+{
+  "name": "apimatic",
+  "description": "APIMatic plugin marketplace — SDK-native, version-aware API context for your AI coding agent.",
+  "owner": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "plugins": [
+    {
+      "name": "context-matic",
+      "source": "./plugins/context-matic",
+      "description": "Deterministic, version-aware API and SDK context for third-party APIs, delivered directly into your coding agent."
+    },
+    {
+      "name": "acp-paypal",
+      "source": "./plugins/acp-paypal",
+      "description": "Integrate and debug PayPal APIs using the acp-paypal MCP server."
+    },
+    {
+      "name": "maxio-sdk-merged",
+      "source": "./plugins/maxio-sdk-merged",
+      "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in a bundled SDK map. A single maxio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-maxio router + the maxio-sdk agent. No MCP server. (Do not install alongside maxio-sdk or maxio-sdk-clone — they share skill/agent names.)"
+    },
+    {
+      "name": "paypal-sdk",
+      "source": "./plugins/paypal-sdk",
+      "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-paypal router + the paypal-sdk agent. No MCP server. (Do not install alongside acp-paypal — the integrate-paypal skill name collides.)"
+    },
+    {
+      "name": "twilio-sdk",
+      "source": "./plugins/twilio-sdk",
+      "description": "Install and consume the Twilio .NET SDK, grounded in a bundled SDK map. A single twilio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-twilio router + the twilio-sdk agent. No MCP server."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "twilio-sdk",
+  "displayName": "Twilio SDK Assistant (single merged agent)",
+  "version": "0.1.0",
+  "description": "Install and consume the Twilio .NET SDK, grounded in a bundled SDK map. A single twilio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-twilio router and the map-grounded twilio-sdk agent. No MCP server.",
+  "author": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "license": "MIT",
+  "homepage": "https://www.apimatic.io",
+  "repository": "https://github.com/apimatic/plugin-marketplace",
+  "keywords": [
+    "twilio",
+    "sms",
+    "messaging",
+    "voice",
+    "verify",
+    "apimatic",
+    "dotnet",
+    "csharp",
+    "sdk"
+  ],
+  "skills": [
+    "./skills/integrate-twilio",
+    "./skills/twilio-getting-started",
+    "./skills/dotnet-client-initialization",
+    "./skills/dotnet-authentication",
+    "./skills/dotnet-calling-endpoints",
+    "./skills/dotnet-models",
+    "./skills/dotnet-error-handling",
+    "./skills/dotnet-configuration-resilience",
+    "./skills/dotnet-testing"
+  ],
+  "agents": [
+    "./agents/twilio-sdk.md"
+  ]
+}

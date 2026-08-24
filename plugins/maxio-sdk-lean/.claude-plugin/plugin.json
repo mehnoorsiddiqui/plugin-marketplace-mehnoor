@@ -1,0 +1,28 @@
+{
+  "name": "maxio-sdk-lean",
+  "displayName": "Maxio SDK Assistant (single merged agent, lean map in SDK source)",
+  "version": "0.4.0",
+  "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in an SDK map that ships inside the SDK's own source. A single maxio-sdk agent clones the SDK once, reads the map from the root of that clone, and opens a named source file from the same clone where the map leaves a fact ambiguous. The map is lean: each operation row states what is specific to that operation, the SDK-wide defaults are stated once in the index, and the HTTP route and endpoint prose sit on the operation in Api/{Controller}.cs. The agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place. Includes the integrate-maxio router and the map-grounded maxio-sdk agent. No MCP server.",
+  "author": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "license": "MIT",
+  "homepage": "https://www.apimatic.io",
+  "repository": "https://github.com/apimatic/plugin-marketplace",
+  "keywords": ["maxio", "advanced-billing", "chargify", "apimatic", "dotnet", "csharp", "sdk"],
+  "skills": [
+    "./skills/integrate-maxio",
+    "./skills/maxio-getting-started",
+    "./skills/dotnet-client-initialization",
+    "./skills/dotnet-authentication",
+    "./skills/dotnet-calling-endpoints",
+    "./skills/dotnet-models",
+    "./skills/dotnet-error-handling",
+    "./skills/dotnet-configuration-resilience",
+    "./skills/dotnet-testing"
+  ],
+  "agents": [
+    "./agents/maxio-sdk.md"
+  ]
+}
