@@ -1,6 +1,6 @@
 ---
 name: python-integrate-paypal
-description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE spawning the paypal-python-sdk agent, not after; Python SDK ONLY, never load it for any other language (the C#/.NET SDK has its own router, integrate-paypal). Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-python-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every python-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and paypal-python-getting-started are the agent's to open and never yours.
+description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE spawning the paypal-python-sdk agent, not after; Python SDK ONLY, never load it for any other language (the C#/.NET SDK has its own router, dotnet-integrate-paypal). Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-python-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every python-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and python-getting-started are the agent's to open and never yours.
 ---
 
 # PayPal Python SDK — Router (map + one agent)
@@ -31,7 +31,7 @@ yours to load, and Step 1c below makes loading them mandatory.
 **Scope guard:** the APIMatic-generated PayPal **Python SDK** (import root `pay_pal_server_sdk`,
 distribution `pay-pal-server-sdk`) in **Python projects only**. Unrelated API, or any language other
 than Python — do nothing; this router and its agent do not apply. For C#/.NET, the sibling router is
-`integrate-paypal` with its `dotnet-*` companions.
+`dotnet-integrate-paypal` with its `dotnet-*` companions.
 
 ## Workflow
 
@@ -141,7 +141,7 @@ work — it touches no project file. When those are done and the agent is still 
 - **Get SDK knowledge from the agent, not yourself.** Don't read the installed package's source,
   don't `pip download` it, and don't web-search PayPal topics to find an implementation detail —
   that is the agent's job.
-- **Don't load `paypal-python-getting-started` or the SDK map pages** — the map is the agent's, and
+- **Don't load `python-getting-started` or the SDK map pages** — the map is the agent's, and
   loading it just bloats your context. (The `python-*` companions are the opposite case: load them,
   per Step 1c.) Don't re-derive a contract *fact* from a companion.
 - **Never write a PayPal/SDK fact from memory** — every signature, field name, enum member, and

@@ -1,6 +1,6 @@
 ---
 name: dotnet-integrate-paypal
-description: MANDATORY FIRST STEP for PayPal .NET SDK work in a C#/.NET project — load this BEFORE spawning the paypal-sdk agent, not after; .NET/C# SDK ONLY, never load it for any other language. Applies when asked to integrate PayPal in C# — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal .NET SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every dotnet-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and paypal-getting-started are the agent's to open and never yours.
+description: MANDATORY FIRST STEP for PayPal .NET SDK work in a C#/.NET project — load this BEFORE spawning the paypal-sdk agent, not after; .NET/C# SDK ONLY, never load it for any other language. Applies when asked to integrate PayPal in C# — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal .NET SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every dotnet-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and dotnet-getting-started are the agent's to open and never yours.
 ---
 
 # PayPal .NET SDK — Router (map + one agent)
@@ -141,7 +141,7 @@ agent is still running, wait.
   SDK, don't fetch its source files, and don't web-search PayPal topics to find an
   implementation detail — that is the agent's job. (You have no SDK source or clone locally;
   the agent holds the bundled map and clones on a real gap.)
-- **Don't load `paypal-getting-started` or the SDK map pages** — the map is the agent's, and
+- **Don't load `dotnet-getting-started` or the SDK map pages** — the map is the agent's, and
   loading it just bloats your context. (The `dotnet-*` companions are the opposite case: load
   them, per Step 1c.) Don't re-derive a contract *fact* from a companion: exact signatures, wire names,
   error accessors, and enum values come from the contract sheet (or you ask the warm `paypal-sdk`

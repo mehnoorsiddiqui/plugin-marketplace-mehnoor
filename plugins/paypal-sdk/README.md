@@ -7,11 +7,11 @@ plus reusable guidance for working with **any APIMatic-generated .NET SDK**.
 
 The **SDK map is bundled with the plugin**, and a single `paypal-sdk` agent grounds every fact in it —
 cloning the SDK source only when the map can't settle a fact. Structure adopted from the
-`maxio-sdk-merged` plugin (an `integrate-paypal` router plus one `paypal-sdk` agent).
+`maxio-sdk-merged` plugin (a `dotnet-integrate-paypal` router plus one `paypal-sdk` agent).
 
 ## The SDK map (bundled; source cloned only on a gap)
 
-The generated table-of-contents ships inside this plugin (`skills/paypal-getting-started/sdk-map.md`
+The generated table-of-contents ships inside this plugin (`skills/dotnet/dotnet-getting-started/sdk-map.md`
 plus `map/` branch pages):
 
 - **`map/operations/`** — one page per controller (5 pages — Orders, Payments, Subscriptions,
@@ -36,7 +36,7 @@ emits the same cross-cutting shape for every .NET SDK it produces. The plugin re
 
 | Layer | Skill(s) | Names used |
 | --- | --- | --- |
-| **SDK-specific** (entry point) | `paypal-getting-started` (+ the bundled SDK map) | Concrete PayPal names (`PayPalServerSdkClient`, `PayPalServerSdkClientOptions`, etc.) |
+| **SDK-specific** (entry point) | `dotnet-getting-started` (+ the bundled SDK map) | Concrete PayPal names (`PayPalServerSdkClient`, `PayPalServerSdkClientOptions`, etc.) |
 | **API-agnostic usage** | `dotnet-client-initialization`, `dotnet-authentication`, `dotnet-calling-endpoints`, `dotnet-models`, `dotnet-error-handling`, `dotnet-configuration-resilience`, `dotnet-testing` | Placeholders (`{Api}Client`, `{Api}ClientOptions`, `{RootNamespace}`, …) so they apply to *any* APIMatic .NET SDK |
 
 The agnostic skills never name PayPal — not in their bodies and not in their `description`
@@ -48,15 +48,15 @@ it for lookup before touching the SDK source.
 > **Adding these skills to another APIMatic .NET plugin:** copy the seven `dotnet-*` directories as
 > they are. Everything SDK-specific — install method, root namespace, environments, auth pattern, the
 > map, and any "this SDK doesn't generate X" caveats — belongs in that plugin's own getting-started
-> skill, the way `paypal-getting-started` carries it here.
+> skill, the way `dotnet-getting-started` carries it here.
 
 ## Skills
 
-- **integrate-paypal** — orchestrator/router. Routes every PayPal .NET SDK task — planning, contract
+- **dotnet-integrate-paypal** — orchestrator/router. Routes every PayPal .NET SDK task — planning, contract
   questions, and SDK errors — to the single `paypal-sdk` agent, and drives the implement-and-verify
   loop. Grounds every fact in the contract sheet the agent produces — never model knowledge, and never
   the map directly.
-- **paypal-getting-started** — install (clone + project reference; the SDK is not on NuGet),
+- **dotnet-getting-started** — install (clone + project reference; the SDK is not on NuGet),
   Production/Sandbox environments, OAuth2 client-credentials auth, the bundled SDK map, and how to
   clone the SDK source only on a map gap. The helper-facing entry point.
 - **dotnet-client-initialization** — construct `{Api}Client` + `{Api}ClientOptions`, supply an `HttpClient`,

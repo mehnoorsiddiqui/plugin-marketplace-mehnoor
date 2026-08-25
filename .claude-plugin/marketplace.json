@@ -29,7 +29,7 @@
     {
       "name": "paypal-sdk",
       "source": "./plugins/paypal-sdk",
-      "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-paypal router + the paypal-sdk agent. No MCP server. (Do not install alongside acp-paypal — the integrate-paypal skill name collides.)"
+      "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-paypal router + the paypal-sdk agent. No MCP server."
     },
     {
       "name": "twilio-sdk",

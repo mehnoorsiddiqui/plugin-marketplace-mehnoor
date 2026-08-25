@@ -9,7 +9,7 @@ description: PayPal Python SDK identity and lookup layer for the paypal-python-s
 > agent — if you are it, this skill is yours to follow directly and fully. It is the only place the
 > bundled SDK map is opened, and the map stays here: an implementer works from the contract sheet
 > this agent produces, and asks the warm agent for any fact the sheet is missing. If you are the
-> main agent, you should not be reading this — load `integrate-paypal-python` instead.
+> main agent, you should not be reading this — load `python-integrate-paypal` instead.
 
 ## SDK identity
 
