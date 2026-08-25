@@ -2,7 +2,7 @@
   "name": "paypal-sdk",
   "displayName": "PayPal SDK Assistant (single merged agent)",
   "version": "0.1.0",
-  "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-paypal router and the map-grounded paypal-sdk agent. No MCP server.",
+  "description": "Install and consume the PayPal .NET and Python SDKs, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes per-language integrate-paypal routers and the map-grounded paypal-sdk agent. No MCP server.",
   "author": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"
@@ -10,7 +10,7 @@
   "license": "MIT",
   "homepage": "https://www.apimatic.io",
   "repository": "https://github.com/apimatic/plugin-marketplace",
-  "keywords": ["paypal", "payments", "orders", "subscriptions", "apimatic", "dotnet", "csharp", "sdk"],
+  "keywords": ["paypal", "payments", "orders", "subscriptions", "apimatic", "dotnet", "csharp", "python", "sdk"],
   "skills": [
     "./skills/dotnet/dotnet-integrate-paypal",
     "./skills/dotnet/dotnet-getting-started",
@@ -20,10 +20,18 @@
     "./skills/dotnet/dotnet-models",
     "./skills/dotnet/dotnet-error-handling",
     "./skills/dotnet/dotnet-configuration-resilience",
-    "./skills/dotnet/dotnet-testing"
+    "./skills/dotnet/dotnet-testing",
+    "./skills/python/python-integrate-paypal",
+    "./skills/python/python-getting-started",
+    "./skills/python/python-client-initialization",
+    "./skills/python/python-authentication",
+    "./skills/python/python-calling-endpoints",
+    "./skills/python/python-models",
+    "./skills/python/python-error-handling",
+    "./skills/python/python-configuration-resilience",
+    "./skills/python/python-testing"
   ],
   "agents": [
     "./agents/paypal-sdk.md"
   ]
 }
-
