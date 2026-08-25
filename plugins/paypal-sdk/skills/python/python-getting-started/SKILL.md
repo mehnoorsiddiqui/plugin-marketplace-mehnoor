@@ -1,20 +1,19 @@
 ---
 name: python-getting-started
-description: PayPal Python SDK identity and lookup layer for the paypal-python-sdk helper agent (Python only) — install, import root, base URL/environments, the auth pattern, and the bundled SDK map of every operation signature, model, enum and error union. The helper agent loads this to answer contract questions; other agents work from the contract sheet it produces.
+description: PayPal Python SDK identity and lookup layer for the paypal-python-sdk helper agent (Python only) — install, import root, base URL/environments, the auth pattern. The helper agent loads this to answer contract questions; other agents work from the contract sheet it produces.
 ---
 
 # Getting started with the PayPal Python SDK
 
-> **Who this skill is for.** This is the **map layer**, preloaded for the `paypal-python-sdk` helper
-> agent — if you are it, this skill is yours to follow directly and fully. It is the only place the
-> bundled SDK map is opened, and the map stays here: an implementer works from the contract sheet
-> this agent produces, and asks the warm agent for any fact the sheet is missing. If you are the
+> **Who this skill is for.** This is the **lookup layer**, preloaded for the `paypal-python-sdk` helper
+> agent — if you are it, this skill is yours to follow directly and fully. An implementer works from
+> the contract sheet this agent produces, and asks the warm agent for any fact the sheet is missing. If you are the
 > main agent, you should not be reading this — load `python-integrate-paypal` instead.
 
 ## SDK identity
 
 Verified against `pay_pal_server_sdk/` and `pyproject.toml` of the generated package at version
-`2.29`. **Re-verify after a version bump** — this page and `map/` are a snapshot, not a live read.
+`2.29`. **Re-verify after a version bump** — this page is a snapshot, not a live read.
 
 | Fact | Value |
 |---|---|
@@ -104,16 +103,7 @@ and the client is built with `no_auth`: every request goes out unauthenticated a
 what a *failed token fetch* raises — it is not what a caller expects, and it is the single most
 common surprise in this SDK.
 
-## The SDK map
-
-Three generated pages sit in `map/`, produced by parsing the package's own AST — they are the
-authority for contract facts, and they are the reason this agent exists:
-
-| Page | Contents | Read it when |
-|---|---|---|
-| `map/operations.md` | All **40 operations** across 5 controllers: exact sync signature, HTTP method + path, return type, and the `ApiError.error` union per operation | Any question about calling something |
-| `map/models.md` | All **286 models**: required members vs `UNSET`-defaulted optional ones, with wire aliases where they differ, and whether a `…Dict` companion exists | Building a request body or reading a response |
-| `map/enums.md` | All **85 enums**: every member with its wire value, plus the open `…OrStr` alias name | Any field whose type ends in `OrStr` |
+## Controllers
 
 Controllers and their operation counts (`client.<attr>`):
 
@@ -125,25 +115,13 @@ Controllers and their operation counts (`client.<attr>`):
 | `client.vault` | `Vault` / `AsyncVault` | 6 | Payment method tokens v3 (**US only**) |
 | `client.transaction_search` | `TransactionSearch` / `AsyncTransactionSearch` | 2 | Transaction search + balances v1 |
 
-**The map lists the SYNC signature only.** Every controller has an `Async…` peer whose operations are
+Every controller has an `Async…` peer whose operations are
 identical in name and parameters and differ solely by being awaited. Do not emit a separate row for
 an async operation; state the rule once on the sheet.
 
-### How to read the map efficiently
+## Contract facts — read the installed package
 
-1. `map/operations.md` is ordered by controller, then operation. Grep for the operation name
-   (`### \`create_order\``) rather than reading the page.
-2. Follow the signature's model names into `map/models.md` (grep `### \`OrderRequest\``). Recurse
-   only into the members the task actually sets — a full transitive expansion of a PayPal model is
-   hundreds of rows and nobody needs it.
-3. Any type ending `OrStr` → grep `map/enums.md` for the base name to get its members.
-4. The `ApiError.error` union is on the operation's row already; you do not need `errors/`.
-
-### When the map is not enough — read the installed package
-
-This plugin ships the **map only**, not the SDK source. When a fact is genuinely absent from the map
-(runtime behaviour, a protocol's exact method set, how a sentinel serializes), read the one module
-that owns it **inside the installed package**. Locate it first:
+Read the one module that owns the fact **inside the installed package**. Locate it first:
 
 ```bash
 python -c "import pay_pal_server_sdk, pathlib; print(pathlib.Path(pay_pal_server_sdk.__file__).parent)"
