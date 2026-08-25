@@ -1,5 +1,5 @@
 ---
-name: paypal-getting-started
+name: dotnet-getting-started
 description: PayPal .NET SDK identity and lookup layer for the paypal-sdk helper agent (.NET/C# only) — install, root namespace, environments, auth pattern, and the bundled SDK map of every operation signature, model, enum, union and error type. The helper agent loads this to answer contract questions; other agents work from the contract sheet it produces.
 ---
 

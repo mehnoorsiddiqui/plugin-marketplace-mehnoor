@@ -1,5 +1,5 @@
 ---
-name: integrate-paypal
+name: dotnet-integrate-paypal
 description: MANDATORY FIRST STEP for PayPal .NET SDK work in a C#/.NET project — load this BEFORE spawning the paypal-sdk agent, not after; .NET/C# SDK ONLY, never load it for any other language. Applies when asked to integrate PayPal in C# — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal .NET SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every dotnet-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and paypal-getting-started are the agent's to open and never yours.
 ---
 
