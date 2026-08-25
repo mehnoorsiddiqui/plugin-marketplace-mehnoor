@@ -1,31 +1,31 @@
 ---
 name: python-integrate-paypal
-description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE spawning the paypal-python-sdk agent, not after; Python SDK ONLY, never load it for any other language (the C#/.NET SDK has its own router, dotnet-integrate-paypal). Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-python-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every python-* companion skill the contract sheet names, and (5) the map boundary, where the SDK map and python-getting-started are the agent's to open and never yours.
+description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE spawning the paypal-python-sdk agent, not after; Python SDK ONLY, never load it for any other language (the C#/.NET SDK has its own router, dotnet-integrate-paypal). Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing to delegate to the paypal-python-sdk agent is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the agent description — (1) the exact plan-file path you must dictate to the agent, (2) the no-project-file-edits window while the agent runs, (3) the hard gate that the plan file exists and has been read before any code, (4) the mandatory load of every python-* companion skill the contract sheet names, and (5) the source boundary, where python-getting-started and the SDK's source are the agent's to open and never yours.
 ---
 
-# PayPal Python SDK — Router (map + one agent)
+# PayPal Python SDK — Router (one agent)
 
 You (the main agent) orchestrate; the `paypal-python-sdk` agent carries the SDK knowledge. The
-division of labour keeps YOUR code grounded and keeps the **SDK map and source** off your context
-entirely — you work from the contract sheet it returns, never from the map or source yourself. The
+division of labour keeps YOUR code grounded and keeps the **SDK source** off your context
+entirely — you work from the contract sheet it returns, never from the source yourself. The
 `python-*` companion skills are a different thing: they are API-agnostic *usage* guidance, they are
 yours to load, and Step 1c below makes loading them mandatory.
 
 ## The subagent
 
-- **`paypal-python-sdk`** is the single agent for every SDK need. It grounds in the bundled SDK map
-  (and reads the installed package's source itself only when the map genuinely falls short), and it:
+- **`paypal-python-sdk`** is the single agent for every SDK need. It grounds in the installed
+  package's own source, and it:
   - **plans** — returns a **contract sheet with no open lookups** (exact signatures, keyword-only
     boundaries, wire aliases, required-vs-`UNSET` members, the `ApiError.error` union per operation,
     and enum members) for the operations in scope; you implement from that sheet;
   - **answers** narrow contract questions directly (a field, a signature, an enum's members, which
     error union an operation carries);
   - **fixes** — hand it a runtime or type-check failure on an SDK type and it investigates from the
-    map (then the one source module the map names) and fixes the code in place, running the project's
+    one source module that owns the fact and fixes the code in place, running the project's
     checks to verify.
 
   Route EVERY SDK need — planning, a fact, an error — to this one agent. **Spawn it once; every
-  later need is a follow-up message to that same warm agent.** A fresh spawn rebuilds its whole map
+  later need is a follow-up message to that same warm agent.** A fresh spawn rebuilds its whole lookup
   context from scratch (the dominant helper cost); reuse is not optional.
 
 **Scope guard:** the APIMatic-generated PayPal **Python SDK** (import root `pay_pal_server_sdk`,
@@ -85,8 +85,8 @@ how-to: it names the hazard and hands you the skill that resolves it, so an unlo
 gap in what you know, not a formality. If the sheet names none, load `python-error-handling`
 anyway — every integration writes an error boundary.
 
-These are API-agnostic usage skills; loading them is not the same as reading the map, and it does
-not breach the map boundary. Contract *facts* still come only from the sheet or the warm agent.
+These are API-agnostic usage skills; loading them is not the same as reading the SDK's source, and it
+does not breach the source boundary. Contract *facts* still come only from the sheet or the warm agent.
 
 Before implementing, check the plan's **Assumptions & Blockers** section:
 
@@ -141,7 +141,7 @@ work — it touches no project file. When those are done and the agent is still 
 - **Get SDK knowledge from the agent, not yourself.** Don't read the installed package's source,
   don't `pip download` it, and don't web-search PayPal topics to find an implementation detail —
   that is the agent's job.
-- **Don't load `python-getting-started` or the SDK map pages** — the map is the agent's, and
+- **Don't load `python-getting-started`** — it is the agent's, and
   loading it just bloats your context. (The `python-*` companions are the opposite case: load them,
   per Step 1c.) Don't re-derive a contract *fact* from a companion.
 - **Never write a PayPal/SDK fact from memory** — every signature, field name, enum member, and
