@@ -1,14 +1,14 @@
 ---
 name: python-getting-started
-description: PayPal Python SDK identity and lookup layer for the paypal-python-sdk helper agent (Python only) — install, import root, base URL/environments, the auth pattern. The helper agent loads this to answer contract questions; other agents work from the contract sheet it produces.
+description: PayPal Python SDK identity and lookup layer (Python only) — install, import root, base URL/environments, the auth pattern, and the module map that names the one file owning each kind of contract fact. Load this before answering any PayPal Python SDK contract question or writing any SDK code.
 ---
 
 # Getting started with the PayPal Python SDK
 
-> **Who this skill is for.** This is the **lookup layer**, preloaded for the `paypal-python-sdk` helper
-> agent — if you are it, this skill is yours to follow directly and fully. An implementer works from
-> the contract sheet this agent produces, and asks the warm agent for any fact the sheet is missing. If you are the
-> main agent, you should not be reading this — load `python-integrate-paypal` instead.
+> **Who this skill is for.** This is the **lookup layer** for anyone writing PayPal Python SDK code —
+> it is yours to follow directly and fully. Ground every contract fact here (and in the source
+> modules the map below names) rather than in recall, and carry those facts onto a contract sheet
+> before you implement. Load `python-integrate-paypal` for the workflow that wraps this skill.
 
 ## SDK identity
 
