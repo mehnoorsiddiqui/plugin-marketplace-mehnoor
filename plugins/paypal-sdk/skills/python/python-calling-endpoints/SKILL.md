@@ -239,19 +239,9 @@ carries `total_items`/`total_pages` varies per operation, and where it does it i
 opt-in parameter that defaults to off — so the field reads back `UNSET` unless you asked for it. The
 loop-until-short-page shape above needs no total and works either way.
 
-## Verify the first call on the wire
-
-On success the SDK returns the decoded body and nothing else — never the URL or the status. So a wrong
-path parameter, a header you thought you set, or a query parameter that silently did not serialize
-produces **no in-band signal**; the only symptom is a `404`/`422` that looks like a provider problem.
-
-The first time you run a new call, log it at the transport seam (`python-client-initialization` shows
-the wrapper) and check: the method and path are what you expect, no `{placeholder}` survived into the
-URL, path segments carry wire values rather than Python member names, and the query parameters you set
-actually appear.
-
 ## Next
 
 - Models, enums, `UNSET` → **python-models**
 - Exceptions and error unions → **python-error-handling**
-- Timeouts, base URLs, proxies → **python-configuration-resilience**
+- Timeouts, base URLs, proxies, and **verifying a new call on the wire** →
+  **python-configuration-resilience**
