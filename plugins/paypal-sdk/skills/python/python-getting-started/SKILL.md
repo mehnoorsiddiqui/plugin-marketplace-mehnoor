@@ -31,8 +31,9 @@ Verified against `pay_pal_server_sdk/` and `pyproject.toml` of the generated pac
 | Fact | Value |
 |---|---|
 | API | PayPal |
-| Distribution name (what you install) | `pay-pal-server-sdk` |
+| Distribution name (what you install) | `pay-pal-server-sdk` — **not on any package index**; installed from source (see *Install*) |
 | Import root (what you import) | `pay_pal_server_sdk` — note the underscores; the two names differ |
+| Source repo | https://github.com/mehnoorsiddiqui/paypal-sdk-v4 |
 | Version | `2.29` |
 | Sync client class | `PayPalServerSdkClient` (alias `Client`) |
 | Async client class | `AsyncPayPalServerSdkClient` (alias `AsyncClient`) |
@@ -51,21 +52,22 @@ The table above is **orientation, not a copy-paste recipe** — it gives you the
 comes from the companion skills. Load each one as you reach its step (see **Integration workflow**
 below) and confirm its types against the installed package.
 
-## Install — add the distribution
+## Install — from source
 
-Install with whatever the project already uses; the distribution and import names differ, so
-install `pay-pal-server-sdk` and import `pay_pal_server_sdk`:
+This SDK is not published to a package index, so there is no `pip install` from PyPI for it. Install
+it from its repository — <https://github.com/mehnoorsiddiqui/paypal-sdk-v4> — into the same
+environment your project runs in:
 
 ```bash
-uv add pay-pal-server-sdk         # uv
-poetry add pay-pal-server-sdk     # poetry
-pip install pay-pal-server-sdk    # pip
+pip install "pay-pal-server-sdk @ git+https://github.com/mehnoorsiddiqui/paypal-sdk-v4.git"
 ```
 
-> Install **version-less** so it floats to the latest release — do not pin a version from memory.
-> The distribution pulls `httpx`, `pydantic[email]` and `typing-extensions` transitively. There is
-> **no SDK source in the project**: the only copy that ever exists is the one in the project's
-> environment (`site-packages`), which is where the *Contract facts* section below reads from.
+The generated distribution carries its own `pyproject.toml`, so `pip` builds and installs it exactly
+like a released package. Do not vendor its source into your project, add its directory to `sys.path`,
+or install it editable (`-e`) from a throwaway clone — an editable install points at the clone's
+path, so deleting the clone breaks every import. Once installed, write the imports from the table
+above: the distribution name you install and the package name you import are not the same string.
+Requires Python 3.10 or newer.
 
 ## Imports — the package splits its surface across four modules
 
