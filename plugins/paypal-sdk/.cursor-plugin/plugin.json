@@ -18,6 +18,7 @@
     "apimatic",
     "dotnet",
     "csharp",
+    "python",
     "sdk"
   ],
   "skills": [
@@ -29,7 +30,16 @@
     "./skills/dotnet/dotnet-models",
     "./skills/dotnet/dotnet-error-handling",
     "./skills/dotnet/dotnet-configuration-resilience",
-    "./skills/dotnet/dotnet-testing"
+    "./skills/dotnet/dotnet-testing",
+    "./skills/python/python-integrate-paypal",
+    "./skills/python/python-getting-started",
+    "./skills/python/python-client-initialization",
+    "./skills/python/python-authentication",
+    "./skills/python/python-calling-endpoints",
+    "./skills/python/python-models",
+    "./skills/python/python-error-handling",
+    "./skills/python/python-configuration-resilience",
+    "./skills/python/python-testing"
   ],
   "agents": [
     "./agents/paypal-sdk.md"
