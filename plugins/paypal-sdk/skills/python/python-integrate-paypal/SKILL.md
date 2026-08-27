@@ -33,8 +33,7 @@ below makes loading them mandatory.
 
 **Scope guard:** the APIMatic-generated PayPal **Python SDK** (import root `pay_pal_server_sdk`,
 distribution `pay-pal-server-sdk`) in **Python projects only**. Unrelated API, or any language other
-than Python — do nothing; this skill does not apply. For C#/.NET, the sibling entry point is
-`dotnet-integrate-paypal` with its `dotnet-*` companions.
+than Python — do nothing; this skill does not apply.
 
 ## Workflow
 
