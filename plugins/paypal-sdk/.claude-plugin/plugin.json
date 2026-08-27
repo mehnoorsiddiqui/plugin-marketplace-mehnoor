@@ -1,8 +1,8 @@
 {
   "name": "paypal-sdk",
-  "displayName": "PayPal SDK Assistant (single merged agent)",
+  "displayName": "PayPal SDK Assistant",
   "version": "0.1.0",
-  "description": "Install and consume the PayPal .NET and Python SDKs, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes per-language integrate-paypal routers and the map-grounded paypal-sdk agent. No MCP server.",
+  "description": "Install and consume the PayPal .NET and Python SDKs through bundled skills. Each language has an integrate-paypal router that sends every step to the skill governing it, a getting-started skill carrying the SDK's identity and where each contract fact is grounded in the SDK's own source, and API-agnostic companions for client setup, authentication, endpoints, models, errors, configuration and testing. Skills only — no agents, no MCP server.",
   "author": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"
@@ -30,8 +30,5 @@
     "./skills/python/python-error-handling",
     "./skills/python/python-configuration-resilience",
     "./skills/python/python-testing"
-  ],
-  "agents": [
-    "./agents/paypal-sdk.md"
   ]
 }
