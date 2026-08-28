@@ -1,6 +1,6 @@
 {
   "name": "apimatic",
-  "description": "APIMatic plugin marketplace — SDK-native, version-aware API context for your AI coding agent.",
+  "description": "APIMatic plugin marketplace \u2014 SDK-native, version-aware API context for your AI coding agent.",
   "owner": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"
@@ -19,27 +19,27 @@
     {
       "name": "maxio-sdk",
       "source": "./plugins/maxio-sdk",
-      "description": "Install and consume the Maxio Advanced Billing .NET SDK with skill-only guidance, a bundled SDK map, and subagent orchestration (integrate-maxio router + maxio-plan contract-sheet agent + maxio-debug escalation-first agent). The agent looks up signatures, errors, enums, and unions in the map and opens only the exact source file it needs in the cloned SDK, instead of grepping. No MCP server."
+      "description": "Install and consume the Maxio Advanced Billing (Chargify) Python SDK with skill-only guidance and a bundled, generated SDK map. A plan-gated python-integrate-maxio router routes each step to the skill governing it; signatures, errors, enums and unions are answered by map lookup rather than grepping the source. No MCP server."
     },
     {
       "name": "maxio-sdk-merged",
       "source": "./plugins/maxio-sdk-merged",
-      "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in a bundled SDK map. A single maxio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-maxio router + the maxio-sdk agent. No MCP server. (Do not install alongside maxio-sdk or maxio-sdk-clone — they share skill/agent names.)"
+      "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in a bundled SDK map. A single maxio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the integrate-maxio router + the maxio-sdk agent. No MCP server. (Do not install alongside maxio-sdk or maxio-sdk-clone \u2014 they share skill/agent names.)"
     },
     {
       "name": "paypal-sdk",
       "source": "./plugins/paypal-sdk",
-      "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-paypal router + the paypal-sdk agent. No MCP server."
+      "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-paypal router + the paypal-sdk agent. No MCP server."
     },
     {
       "name": "twilio-sdk",
       "source": "./plugins/twilio-sdk",
-      "description": "Install and consume the Twilio .NET SDK, grounded in a bundled SDK map. A single twilio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place — cloning the SDK source only when the map cannot settle a fact. Includes the integrate-twilio router + the twilio-sdk agent. No MCP server."
+      "description": "Install and consume the Twilio .NET SDK, grounded in a bundled SDK map. A single twilio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the integrate-twilio router + the twilio-sdk agent. No MCP server."
     },
     {
       "name": "maxio-sdk-lean",
       "source": "./plugins/maxio-sdk-lean",
-      "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in a lean SDK map that ships inside the SDK's own source — a single maxio-sdk agent clones the SDK and reads the map from the root of that clone. Each operation row states what is specific to that operation; the SDK-wide defaults (throw-only, no pagination, the fixed Case B accessors, the Production server group) are stated once in the index, and the HTTP route and endpoint prose sit on the operation in Api/{Controller}.cs, in that same clone. One maxio-sdk agent plus the integrate-maxio router. No MCP server. (Do not install alongside maxio-sdk, maxio-sdk-clone or maxio-sdk-merged — they share skill/agent names.)"
+      "description": "Install and consume the Maxio Advanced Billing .NET SDK, grounded in a lean SDK map that ships inside the SDK's own source \u2014 a single maxio-sdk agent clones the SDK and reads the map from the root of that clone. Each operation row states what is specific to that operation; the SDK-wide defaults (throw-only, no pagination, the fixed Case B accessors, the Production server group) are stated once in the index, and the HTTP route and endpoint prose sit on the operation in Api/{Controller}.cs, in that same clone. One maxio-sdk agent plus the integrate-maxio router. No MCP server. (Do not install alongside maxio-sdk, maxio-sdk-clone or maxio-sdk-merged \u2014 they share skill/agent names.)"
     }
   ]
 }

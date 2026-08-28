@@ -40,33 +40,31 @@ PayPal-focused plugin built on the same context engine.
 
 ### maxio-sdk
 
-Maxio Advanced Billing (formerly Chargify) **.NET SDK** plugin — no MCP server, no telemetry,
-Claude Code only, C#/.NET only. Its core feature is a bundled, generated **SDK map**
-(`skills/maxio-getting-started/sdk-map.md` + `map/`) plus a subagent orchestration layer: the agent
-answers every signature/model/enum/error question by map lookup, clones the SDK source **only on
-first need** for a full body the map doesn't carry, and never greps the clone or opens the SDK's
-`api-reference.md`.
+Maxio Advanced Billing (formerly Chargify) **Python SDK** plugin — no MCP server, no telemetry,
+no agents, Claude Code only, Python only. Its core feature is a bundled, generated **SDK map**
+(`skills/python-getting-started/sdk-map.md` + `map/operations/`, 34 controller pages covering 250
+operations): every signature/model/enum/error question is answered by map lookup, opening only the
+one module a row names, and never grepping the package tree.
 
 **Skills**
 
-- **integrate-maxio** — orchestrator/router: routes a Maxio .NET SDK task to the `maxio-plan` or
-  `maxio-debug` agent, handles blocker hand-back, and drives the implement-and-verify loop.
-- **maxio-getting-started** — SDK-specific entry point: identity, client construction, servers/auth,
-  the SDK map, lookup hygiene ("keep lookups cheap"), and the contract-sheet workflow.
-- Seven `dotnet-*` companions (`dotnet-client-initialization`, `dotnet-authentication`,
-  `dotnet-calling-endpoints`, `dotnet-models`, `dotnet-error-handling`,
-  `dotnet-configuration-resilience`, `dotnet-testing`) — usage guidance layered on the map.
+- **python-integrate-maxio** — the router. Plan-first, with a hard gate: no project file is created
+  or edited until `maxio-plan.md` exists at the repo root carrying a contract sheet with no open
+  lookups, and has been read.
+- **python-getting-started** — SDK-specific entry point: identity, install, client construction, the
+  three servers and their `{site}`/`{connector}` template variables, the two auth schemes, the error
+  model, the bundled SDK map, and what a contract sheet for this SDK must carry.
+- Ten `python-*` companions (`python-integration-planning`, `python-client-initialization`,
+  `python-authentication`, `python-calling-endpoints`, `python-models`, `python-error-handling`,
+  `python-configuration-resilience`, `python-inbound-state`, `python-sdk-drift`, `python-testing`)
+  — API-agnostic usage guidance layered on the map, applying to any APIMatic Python SDK.
 
-**Agents**
+`python-integration-planning`, `python-inbound-state` and `python-sdk-drift` close the readiness rows
+the SDK surface never raises on its own: what must be true before shipping, what the provider sends
+back (Maxio has webhooks), and what breaks silently when the SDK is regenerated.
 
-- **maxio-plan** — read-only planner: loads the bundled skills + SDK map and writes a
-  contract-grounded `maxio-plan.md` before any code is written (no MCP).
-- **maxio-debug** — diagnoses and fixes Maxio code in place, map-first, verifying with `dotnet build`
-  / `dotnet test` (no MCP).
-
-The map's generated pages are never hand-edited — they are produced by the
-`sdk-map-generator` repo and verified field-exact against the SDK source
-(github.com/asadali214/advanced-billing-sample-sdk, pinned per map stamp).
+The map's generated pages are never hand-edited — they are produced with the SDK and verified
+field-exact against its source.
 
 ## Per-IDE manifest convention
 
