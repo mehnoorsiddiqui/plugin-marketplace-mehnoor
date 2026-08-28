@@ -8,8 +8,10 @@ description: Calling operations on an APIMatic-generated Python SDK — finding 
 Operations are methods on **group accessors** of the client, named in `snake_case`:
 `client.{group}.{operation}(...)`. An operation that belongs to no group sits **directly on the
 client**, called `client.{operation}(...)`. The accessor, the exact operation name and its signature
-come from the contract sheet — operation names follow no fixed verb/resource pattern, so take the real
-name from the sheet, never from memory.
+come from the contract sheet, grounded in the SDK map's per-controller page
+(`map/operations/{group}.md`), whose block for each operation is headed by its full accessor path and
+carries the signature verbatim — operation names follow no fixed verb/resource pattern, so take the
+real name from the sheet, never from memory.
 
 > Throughout this skill, `{...}` is a placeholder for a name you take from your SDK (e.g. `{group}`,
 > `{operation}`, `{Model}`) — replace it with the concrete identifier from the source.
@@ -67,7 +69,10 @@ Read the sheet's default column **before** concluding the API dropped data. It w
 
 ## Passing a body
 
-How the body appears depends on the media type the operation declares:
+How the body appears depends on the media type the operation declares. The operation's map block
+settles both: its **Params** bullet labels the body parameter with its media type (`body — JSON
+body`), and its **Type sources** table names the module declaring the request model and its `…Dict`
+companion.
 
 **JSON** — one parameter, typed as a union of the model and its `TypedDict` companion, so both
 spellings type-check:
@@ -131,7 +136,8 @@ in both modes: a failed token fetch (it unwraps internally), and any decode fail
 
 ### Return types
 
-Three shapes, and the sheet names which one each operation has:
+Three shapes, and the sheet names which one each operation has — the map block states it directly as
+**Returns (parsed)** and **Returns (raw)**:
 
 - **A decoded model** — the JSON case, and the common one.
 - **Text** — a `str` or other scalar, for an operation declaring a text response.

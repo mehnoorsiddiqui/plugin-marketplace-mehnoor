@@ -396,7 +396,7 @@ never gate CI on a third party's uptime unless you mean to.
   a no-op, but the habit keeps the test and the real wiring the same shape
   (`python-client-initialization`).
 - To look up an operation's signature, its request/response types, or an operation's error union, take
-  them from the contract sheet — not from a reflected view of the installed package, and not from
-  memory.
+  them from the contract sheet — grounded in the operation's SDK map block, which carries all three —
+  not from a reflected view of the installed package, and not from memory.
 - Prefer this transport-seam approach over wrapping the SDK in your own protocol unless you need to
   abstract the SDK for other reasons.

@@ -32,7 +32,9 @@ error mapping, connection pooling, and one timeout.
 ## Server and base-URL configuration
 
 Server selection is **not** an environment enum. What the constructor accepts depends on what the
-description declares, in one of four shapes — take yours from the contract sheet:
+description declares, in one of four shapes — take yours from the contract sheet, grounded in the SDK
+map's *Servers & auth* section, which names the environments and servers this SDK declares and so
+settles which arm it is:
 
 | The API declares | Constructor keywords |
 |---|---|

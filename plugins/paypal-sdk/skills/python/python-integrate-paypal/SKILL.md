@@ -1,6 +1,6 @@
 ---
 name: python-integrate-paypal
-description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE you write any code; Python SDK ONLY, never load it for any other language. Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing the SDK exists is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the package — (1) load `python-getting-started` and confirm the package is actually installed before any lookup, (2) the exact plan-file path and the no-project-file-edits window until a contract sheet with no open lookups exists there and you have read it, (3) the mandatory load of every python-* companion skill the sheet names, (4) sync-vs-async decided once from the host application before the first call, and (5) the memory ban, where every signature, wire alias, error union and enum member comes from a lookup and never from recall or runtime introspection.
+description: MANDATORY FIRST STEP for PayPal Python SDK work in a Python project — load this BEFORE you write any code; Python SDK ONLY, never load it for any other language. Applies when asked to integrate PayPal in Python — take a payment at checkout, capture, refund, save a card, subscriptions, billing plans, vaulted payment methods, transaction search — or when a PayPal Python SDK call errors or behaves unexpectedly. Knowing the SDK exists is NOT a substitute for loading this, because it carries five binding gates stated NOWHERE else and not inferable from the package — (1) load `python-getting-started`, confirm the package is actually installed and read the SDK map that ships with it before any lookup, (2) the exact plan-file path and the no-project-file-edits window until a contract sheet with no open lookups exists there and you have read it, (3) the mandatory load of every python-* companion skill the sheet names, (4) sync-vs-async decided once from the host application before the first call, and (5) the memory ban, where every signature, wire alias, error union and enum member comes from a lookup and never from recall or runtime introspection.
 ---
 
 # PayPal Python SDK — Integration workflow (lookup layer + contract sheet)
@@ -15,6 +15,10 @@ below makes loading them mandatory.
   package exports and the four modules the surface splits across, environments and the `base_url`
   knob, the auth pattern, the controllers, and a **module table** naming the one file that owns each
   kind of fact. Load it first, always.
+- **The SDK map is your lookup surface, and you open it yourself.** The SDK ships `sdk-map.md` and
+  `map/operations/` at its root. There is no helper agent on the Python side — the map is yours to
+  read, not something to delegate. `python-getting-started` tells you how to traverse it: read
+  `sdk-map.md` once, then the one controller page your operations live on.
 - **The installed package is the ground truth; the module table is only the locator.** Confirm the
   package is importable before you rely on a lookup — `python -c "import pay_pal_server_sdk,
   pathlib; print(pathlib.Path(pay_pal_server_sdk.__file__).parent)"`. **If it is not installed there
@@ -156,8 +160,9 @@ questions.
   `inspect.signature`, or a REPL poke is the Python-flavoured version of decompiling the package: it
   answers what exists, never what is *supported*, and it silently invites private attributes into
   your code. Read the source module instead.
-- **Don't grep the whole package to locate something** — the module table in
-  `python-getting-started` is the locator; grep only *inside* the module it names, for the symbol.
+- **Don't grep the whole package to locate something** — the SDK map is the locator (and says so:
+  *"Never grep for a type"*); grep only *inside* the module its **Type sources** table names, for the
+  symbol.
 - **Don't vendor, `sys.path`-hack, or editable-install the SDK from a throwaway clone** to make a
   lookup possible. Install the distribution properly into the project's environment (see
   `python-getting-started`); an editable install pointed at a clone breaks every import the moment
