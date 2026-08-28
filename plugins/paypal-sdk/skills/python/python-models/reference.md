@@ -76,7 +76,8 @@ def to_domain(value: {Enum} | str) -> MyEnum:
 ## Union aliases — finding the exact arms
 
 A union is a **type alias**, not a class, so there is nothing to construct and nothing to unwrap. The
-contract sheet lists the arms; each arm is used directly.
+contract sheet lists the arms; each arm is used directly. The SDK map names the **module** declaring
+the alias, not its arms — read them off the alias there.
 
 ```python
 from {root_package}.models import {Union}          # also {root_package}.models.unions.{module}
