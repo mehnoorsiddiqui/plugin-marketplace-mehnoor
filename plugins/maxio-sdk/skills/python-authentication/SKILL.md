@@ -1,6 +1,6 @@
 ---
 name: python-authentication
-description: Authentication for an APIMatic-generated Python SDK — supplying credentials in typed or dict form, the scheme shapes, the managed OAuth2 token lifecycle and its caching, what a failed token fetch actually raises (and why it bypasses the non-raising response mode), and loading secrets safely. Load before wiring credentials into the client, or when a call fails with 401/403.
+description: Authentication for an APIMatic-generated Python SDK — supplying credentials in typed or dict form, the scheme shapes, the managed OAuth2 token lifecycle and its caching, what a failed token fetch actually raises (and why it bypasses the non-raising response mode), and loading secrets safely. Load before the first call that needs credentials, and again when deciding what happens if one is absent — a missing credential is a deployment fault that should refuse to boot, not a 401 on whichever request arrives first.
 ---
 
 # Authenticating an APIMatic Python SDK client
@@ -14,9 +14,8 @@ dict of the same keys; set the one(s) your API uses, then construct the client (
 > `{root_package}`, `{Client}`, `{oauth2}`) — replace it with the concrete identifier from the source.
 
 To see which schemes a specific SDK accepts, read the **credentials keywords on its client
-constructor** — those are the source of truth (take them from the contract sheet, grounded in the SDK
-map's constructor-keyword table and its *Servers & auth* section, not from recall).
-`{root_package}/auth.py` is the cheap cross-check:
+constructor** — those are the source of truth (take them from the contract sheet the SDK helper agent
+grounds from the SDK map/source, not from recall). `{root_package}/auth.py` is the cheap cross-check:
 its `AuthSchemes` holder carries exactly one field per declared scheme, and the field names *are* the
 constructor keywords. The `{root_package}/core/auth/schemes/` directory ships *every* scheme the
 generator supports as shared runtime code regardless of what the API accepts, so never infer a scheme

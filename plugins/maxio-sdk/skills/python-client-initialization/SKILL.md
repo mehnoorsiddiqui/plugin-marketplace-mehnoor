@@ -1,6 +1,6 @@
 ---
 name: python-client-initialization
-description: Creating and holding an APIMatic-generated Python SDK client in Python — construction, the keyword-only constructor shape, choosing the sync or async class, transport ownership and the close/aclose obligation, and where the client lives in a script, an ASGI app, or a forking worker. Load before wiring the client into an application or writing the factory that builds it.
+description: Creating and holding an APIMatic-generated Python SDK client in Python — construction, the keyword-only constructor shape, choosing the sync or async class, transport ownership and the close/aclose obligation, and where the client lives in a script, an ASGI app, or a forking worker. Load before the client is constructed anywhere — including in a script or a single view. Where it lives, whether it is closed, and sync vs async are decided once and are expensive to change later.
 ---
 
 # Initializing an APIMatic Python SDK client
@@ -39,8 +39,8 @@ group) and called `client.{group}.{operation}(...)` — for example, a `widgets`
 operation is `client.widgets.list_widgets(...)`. An operation that belongs to no group sits **directly
 on the client**, called `client.{operation}(...)`. Accessors are `cached_property`, so they are
 attributes without parentheses and return the same object each time. The available accessors (and any
-direct operations) come from the contract sheet, grounded in the SDK map's controller table
-(`sdk-map.md`) — not from a runtime `dir()` or a REPL poke. See
+direct operations) come from the contract sheet, grounded from the SDK source via
+`python-getting-started`'s module map — not from a runtime `dir()` or a REPL poke. See
 `python-calling-endpoints`.
 
 Both classes are also exported under the fixed aliases `Client` and `AsyncClient`. **Prefer the full
@@ -131,8 +131,7 @@ declares, in one of four shapes:
 
 Omitting the server keyword falls through to the config's own default rather than writing `None` over
 it — and **that default is whatever the spec listed first, which for many providers is a sandbox.**
-Nothing announces it. Confirm the default from the contract sheet — the SDK map's *Servers & auth*
-section names the base URL each arm resolves to — and pass the server explicitly in
+Nothing announces it. Confirm the default from the contract sheet and pass the server explicitly in
 every environment, production included. Server template variables live on the config class, so how you
 reach them follows the arm above. **python-configuration-resilience** owns server / base-URL
 configuration in full.

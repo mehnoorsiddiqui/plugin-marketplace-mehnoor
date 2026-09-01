@@ -1,6 +1,6 @@
 ---
 name: python-configuration-resilience
-description: Client configuration and resilience for an APIMatic-generated Python SDK — server and base-URL selection, the fact that the SDK performs NO retries and what that leaves you to build, what a timeout actually bounds, proxies and TLS, and request/response logging through the transport seam. Load before you configure or tune the client — the keyword names alone do not reveal what is handled for you and what is not.
+description: Client configuration and resilience for an APIMatic-generated Python SDK — server and base-URL selection, the fact that the SDK performs NO retries and what that leaves you to build, what a timeout actually bounds, proxies and TLS, and request/response logging through the transport seam. Load before ANY call goes out — including, especially, when you intend to accept the defaults. What retries, what a timeout bounds, and whether a page loop can run forever are decided here, and the keyword names reveal none of it. Accepting them unread is a choice made blind, not a choice deferred.
 ---
 
 # Configuration & resilience for an APIMatic Python SDK
@@ -32,9 +32,7 @@ error mapping, connection pooling, and one timeout.
 ## Server and base-URL configuration
 
 Server selection is **not** an environment enum. What the constructor accepts depends on what the
-description declares, in one of four shapes — take yours from the contract sheet, grounded in the SDK
-map's *Servers & auth* section, which names the environments and servers this SDK declares and so
-settles which arm it is:
+description declares, in one of four shapes — take yours from the contract sheet:
 
 | The API declares | Constructor keywords |
 |---|---|

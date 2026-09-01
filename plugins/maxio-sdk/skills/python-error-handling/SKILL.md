@@ -1,6 +1,6 @@
 ---
 name: python-error-handling
-description: Error and exception handling for an APIMatic-generated Python SDK — load before writing any try/except around an SDK call, an exception-translation layer, or error middleware. Covers the single ApiError type and its per-operation error union, narrowing with isinstance or match, the failures that are NOT ApiError and reach your boundary unmatched, and the traps that make an otherwise reasonable except ladder silently wrong.
+description: Error and exception handling for an APIMatic-generated Python SDK — load before the FIRST call — not only once you have decided to write a try/except, since a call left unguarded is the one that takes the process down. Covers the single ApiError type and its per-operation error union, narrowing with isinstance or match, the failures that are NOT ApiError and reach your boundary unmatched, and the traps that make an otherwise reasonable except ladder silently wrong.
 ---
 
 # Error handling for an APIMatic Python SDK
@@ -51,15 +51,12 @@ as a type alias:
 {Operation}ErrorBody: TypeAlias = {TypedError} | RawError
 ```
 
-Four places give you that alias, in order of preference:
+Three places give you that alias, in order of preference:
 
 1. **The contract sheet** — it lists the union per operation.
-2. **The operation's map block** (`map/operations/{group}.md`) — its **Error** line names the alias
-   and its case, and its **Error arms** bullet lists each arm *with the HTTP statuses it maps from*.
-   This is where the sheet's row should have come from.
-3. **The operation's docstring**, whose `Raises:` section ends with the union verbatim:
+2. **The operation's docstring**, whose `Raises:` section ends with the union verbatim:
    `` `error` is `{TypedError} | RawError`. ``
-4. **The error module itself**, whose `map` is a `match` on `response.status_code` naming the schema
+3. **The error module itself**, whose `map` is a `match` on `response.status_code` naming the schema
    each status decodes to.
 
 **`RawError` is always the last arm.** The generator emits it unconditionally as the catch-all, so
@@ -73,8 +70,7 @@ at all and always yields `RawError`.
 afternoon.** A description that declares a different error schema per tag gets a different model per
 tag, so a check written against one operation's arm silently fails on another's — those failures fall
 through to the `RawError` branch and lose every field they actually carried. Take the arm from the
-contract sheet per operation — the map's **Error arms** bullet is per-operation for exactly this
-reason — never reuse one from a sibling call.
+contract sheet per operation; never reuse one from a sibling call.
 
 An operation can also declare **more than one** typed arm — one per documented status or status
 *range* (`4XX`, `5XX` are legal), so a union may read `{TypedError1} | {TypedError2} | RawError`.

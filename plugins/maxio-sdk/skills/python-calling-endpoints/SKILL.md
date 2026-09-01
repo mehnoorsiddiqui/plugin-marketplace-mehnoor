@@ -1,6 +1,6 @@
 ---
 name: python-calling-endpoints
-description: Calling operations on an APIMatic-generated Python SDK — finding the group that owns an operation, the positional/keyword-only split and the parameters that never appear in the signature at all, passing a body as a model or a dict, the two response modes, per-call request options, async usage, and paging. Load before writing the first call to an SDK operation, or when an operation's shape or return type is unclear.
+description: Calling operations on an APIMatic-generated Python SDK — finding the group that owns an operation, the positional/keyword-only split and the parameters that never appear in the signature at all, passing a body as a model or a dict, the two response modes, per-call request options, async usage, and paging. Load before the first call to any SDK operation — parameters that never appear in the signature, and the positional/keyword-only split, are not recoverable from the call site.
 ---
 
 # Calling endpoints on an APIMatic Python SDK
@@ -8,10 +8,8 @@ description: Calling operations on an APIMatic-generated Python SDK — finding 
 Operations are methods on **group accessors** of the client, named in `snake_case`:
 `client.{group}.{operation}(...)`. An operation that belongs to no group sits **directly on the
 client**, called `client.{operation}(...)`. The accessor, the exact operation name and its signature
-come from the contract sheet, grounded in the SDK map's per-controller page
-(`map/operations/{group}.md`), whose block for each operation is headed by its full accessor path and
-carries the signature verbatim — operation names follow no fixed verb/resource pattern, so take the
-real name from the sheet, never from memory.
+come from the contract sheet — operation names follow no fixed verb/resource pattern, so take the real
+name from the sheet, never from memory.
 
 > Throughout this skill, `{...}` is a placeholder for a name you take from your SDK (e.g. `{group}`,
 > `{operation}`, `{Model}`) — replace it with the concrete identifier from the source.
@@ -69,10 +67,7 @@ Read the sheet's default column **before** concluding the API dropped data. It w
 
 ## Passing a body
 
-How the body appears depends on the media type the operation declares. The operation's map block
-settles both: its **Params** bullet labels the body parameter with its media type (`body — JSON
-body`), and its **Type sources** table names the module declaring the request model and its `…Dict`
-companion.
+How the body appears depends on the media type the operation declares:
 
 **JSON** — one parameter, typed as a union of the model and its `TypedDict` companion, so both
 spellings type-check:
@@ -136,8 +131,7 @@ in both modes: a failed token fetch (it unwraps internally), and any decode fail
 
 ### Return types
 
-Three shapes, and the sheet names which one each operation has — the map block states it directly as
-**Returns (parsed)** and **Returns (raw)**:
+Three shapes, and the sheet names which one each operation has:
 
 - **A decoded model** — the JSON case, and the common one.
 - **Text** — a `str` or other scalar, for an operation declaring a text response.

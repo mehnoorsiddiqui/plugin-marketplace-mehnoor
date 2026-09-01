@@ -8,8 +8,7 @@ description: Working with models in an APIMatic-generated Python SDK — pydanti
 Most request/response data are **immutable pydantic v2 models** built with keyword arguments (covered
 in `python-calling-endpoints`). This skill covers the **non-obvious model shapes** that trip
 integrations up. The patterns are generic across APIMatic Python SDKs; take the real type and member
-names from the contract sheet — the SDK map's **Type sources** table names the module declaring each
-type, and the members themselves are read there, since the map carries no shapes — never from a
+names from the contract sheet (the SDK helper agent grounds it from the SDK map/source) — never from a
 REPL poke at the installed package.
 
 > Throughout this skill, `{...}` is a placeholder for a name you take from your SDK (e.g.

@@ -1,13 +1,13 @@
 ---
 name: python-getting-started
-description: PayPal Python SDK identity and lookup layer (Python only) — install, import root, base URL/environments, the auth pattern, and the module map that names the one file owning each kind of contract fact. Load this before answering any PayPal Python SDK contract question or writing any SDK code.
+description: PayPal Python SDK identity and lookup layer (Python only) — install, import root, base URL/environments, the auth pattern, the SDK map that ships at the SDK root (`sdk-map.md` + `map/operations/`) and how to traverse it, and the module table naming the one file owning each fact the map leaves to the source. Load this before answering any PayPal Python SDK contract question or writing any SDK code.
 ---
 
 # Getting started with the PayPal Python SDK
 
 > **Who this skill is for.** This is the **lookup layer** for anyone writing PayPal Python SDK code —
-> it is yours to follow directly and fully. Ground every contract fact here (and in the source
-> modules the map below names) rather than in recall, and carry those facts onto a contract sheet
+> it is yours to follow directly and fully. Ground every contract fact here (in the SDK map, and in
+> the source modules it names) rather than in recall, and carry those facts onto a contract sheet
 > before you implement. Load `python-integrate-paypal` for the workflow that wraps this skill.
 
 This is the **SDK-specific** entry point. For general patterns that apply to any APIMatic-generated
@@ -164,7 +164,41 @@ Every controller has an `Async…` peer whose operations are identical in name a
 differ solely by being awaited. Do not emit a separate row for an async operation; state the rule
 once on the sheet.
 
-## Contract facts — read the installed package
+The SDK map's controller table carries the same counts and links to a page per controller
+(`map/operations/{controller}.md`) — go there for the operations themselves.
+
+## SDK map — look up first, open the module second
+
+The SDK ships a generated map at its **root** — the directory holding `pyproject.toml`, the
+`pay_pal_server_sdk/` source directory, and these two entries:
+
+- **`sdk-map.md`** — the index: client construction with the full constructor-keyword table, the
+  error-handling model (`ApiError` / `ApiResult` / `RawError`, Case A vs Case B), where models,
+  enums and error aliases live, servers and auth, and the link table into `map/`.
+- **`map/operations/{controller}.md`** — one page per controller, one `###` block per operation:
+  the HTTP verb and route, the sync parsed signature, each parameter's role and wire name, both
+  return types, the error alias with the status each arm maps from, and a **Type sources** table
+  naming the module that declares every type the operation mentions.
+
+Every `Source` path on the map is relative to that SDK root, so `pay_pal_server_sdk/models/order.py`
+opens as written from there.
+
+**The map is the locator; the source modules are the shapes.** Read the map first — signatures,
+routes, parameter roles, return types, error unions, and which module declares a type are all
+answered there without opening a single `.py` file. Then open the one module the map names for what
+it deliberately does not carry: a model's members, an enum's values, a field's wire alias. The map
+says so itself — *"Shapes live only in the source … Never grep for a type."*
+
+`sdk-map.md` carries the invariants every operation block assumes, so load it before any
+`map/operations/` page; the pages are written to be read beside it.
+
+## Contract facts — the map first, then the module
+
+**Six of these are now map lookups — don't open the module for them:** an operation's signature,
+parameters and return type; the client's constructor keywords; the `timeout` default; the members of
+`ApiError` / `Success` / `Failure` / `RawError`; an operation's error union and the status each arm
+maps from; base-URL and auth wiring. The table below covers everything else, and the full body
+behind a map row.
 
 Read the one module that owns the fact **inside the installed package**. Locate it first:
 

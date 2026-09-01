@@ -1,8 +1,8 @@
 {
   "name": "maxio-sdk",
-  "displayName": "Maxio SDK Assistant",
-  "version": "0.2.0",
-  "description": "Install and consume the Maxio Advanced Billing .NET SDK with a bundled, generated SDK map plus subagent orchestration — an integrate-maxio router, a map-grounded maxio-plan contract-sheet agent, and a map-first maxio-debug agent. Answers signatures, models, enums, and errors by map lookup and clones the SDK source only on first need. No MCP server.",
+  "displayName": "Maxio SDK Assistant (Python)",
+  "version": "0.3.0",
+  "description": "Install and consume the Maxio Advanced Billing (Chargify) Python SDK. A plan-gated python-integrate-maxio router sends every step to the skill governing it, python-getting-started carries the SDK's identity and bundles the generated SDK map that grounds every contract fact, and ten API-agnostic companions cover planning, client setup, authentication, endpoints, models, errors, configuration and resilience, inbound state, change safety and testing. Signatures, models, enums and errors are answered by map lookup rather than grepping. Skills only -- no agents, no MCP server.",
   "author": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"
@@ -10,20 +10,29 @@
   "license": "MIT",
   "homepage": "https://www.apimatic.io",
   "repository": "https://github.com/apimatic/plugin-marketplace",
-  "keywords": ["maxio", "advanced-billing", "chargify", "apimatic", "dotnet", "csharp", "sdk"],
-  "skills": [
-    "./skills/integrate-maxio",
-    "./skills/maxio-getting-started",
-    "./skills/dotnet-client-initialization",
-    "./skills/dotnet-authentication",
-    "./skills/dotnet-calling-endpoints",
-    "./skills/dotnet-models",
-    "./skills/dotnet-error-handling",
-    "./skills/dotnet-configuration-resilience",
-    "./skills/dotnet-testing"
+  "keywords": [
+    "maxio",
+    "advanced-billing",
+    "chargify",
+    "subscriptions",
+    "recurring-billing",
+    "invoices",
+    "apimatic",
+    "python",
+    "sdk"
   ],
-  "agents": [
-    "./agents/maxio-plan.md",
-    "./agents/maxio-debug.md"
+  "skills": [
+    "./skills/python-integrate-maxio",
+    "./skills/python-getting-started",
+    "./skills/python-integration-planning",
+    "./skills/python-client-initialization",
+    "./skills/python-authentication",
+    "./skills/python-calling-endpoints",
+    "./skills/python-models",
+    "./skills/python-error-handling",
+    "./skills/python-configuration-resilience",
+    "./skills/python-inbound-state",
+    "./skills/python-sdk-drift",
+    "./skills/python-testing"
   ]
 }
