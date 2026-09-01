@@ -2,7 +2,7 @@
   "name": "paypal-sdk",
   "displayName": "PayPal SDK Assistant",
   "version": "0.1.0",
-  "description": "Install and consume the PayPal .NET and Python SDKs through bundled skills. Each language has an integrate-paypal router that sends every step to the skill governing it, a getting-started skill carrying the SDK's identity and where each contract fact is grounded in the SDK's own source, and API-agnostic companions for client setup, authentication, endpoints, models, errors, configuration and testing. Skills only — no agents, no MCP server.",
+  "description": "Install and consume the PayPal .NET, Python and TypeScript SDKs through bundled skills. Each language has an integrate-paypal router that sends every step to the skill governing it, a getting-started skill carrying the SDK's identity and where each contract fact is grounded in the SDK's own source, and API-agnostic companions for client setup, authentication, endpoints, models, errors, configuration and testing. Skills only — no agents, no MCP server.",
   "author": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"
@@ -10,7 +10,7 @@
   "license": "MIT",
   "homepage": "https://www.apimatic.io",
   "repository": "https://github.com/apimatic/plugin-marketplace",
-  "keywords": ["paypal", "payments", "orders", "subscriptions", "apimatic", "dotnet", "csharp", "python", "sdk"],
+  "keywords": ["paypal", "payments", "orders", "subscriptions", "apimatic", "dotnet", "csharp", "python", "typescript", "sdk"],
   "skills": [
     "./skills/dotnet/dotnet-integrate-paypal",
     "./skills/dotnet/dotnet-getting-started",
@@ -29,6 +29,15 @@
     "./skills/python/python-models",
     "./skills/python/python-error-handling",
     "./skills/python/python-configuration-resilience",
-    "./skills/python/python-testing"
+    "./skills/python/python-testing",
+    "./skills/typescript/typescript-integrate-paypal",
+    "./skills/typescript/typescript-paypal-getting-started",
+    "./skills/typescript/typescript-client-initialization",
+    "./skills/typescript/typescript-authentication",
+    "./skills/typescript/typescript-calling-endpoints",
+    "./skills/typescript/typescript-models",
+    "./skills/typescript/typescript-error-handling",
+    "./skills/typescript/typescript-configuration-resilience",
+    "./skills/typescript/typescript-testing"
   ]
 }
