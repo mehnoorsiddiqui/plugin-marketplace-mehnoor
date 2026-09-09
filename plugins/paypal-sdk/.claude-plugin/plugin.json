@@ -1,43 +1,16 @@
 {
-  "name": "paypal-sdk",
-  "displayName": "PayPal SDK Assistant",
-  "version": "0.1.0",
-  "description": "Install and consume the PayPal .NET, Python and TypeScript SDKs through bundled skills. Each language has an integrate-paypal router that sends every step to the skill governing it, a getting-started skill carrying the SDK's identity and where each contract fact is grounded in the SDK's own source, and API-agnostic companions for client setup, authentication, endpoints, models, errors, configuration and testing. Skills only — no agents, no MCP server.",
+  "name": "paypal",
+  "displayName": "Paypal",
+  "version": "0.3.3",
+  "description": "Integrate and consume the APIMatic-generated PayPal Server SDK — bundled skills for C#/.NET, Python, TypeScript.",
   "author": {
-    "name": "APIMatic",
-    "email": "developer@apimatic.io"
+    "name": "Muhammad Rafay Nadeem",
+    "email": "muhammad.nadeem@apimatic.io"
   },
   "license": "MIT",
-  "homepage": "https://www.apimatic.io",
-  "repository": "https://github.com/apimatic/plugin-marketplace",
-  "keywords": ["paypal", "payments", "orders", "subscriptions", "apimatic", "dotnet", "csharp", "python", "typescript", "sdk"],
   "skills": [
-    "./skills/dotnet/dotnet-integrate-paypal",
-    "./skills/dotnet/dotnet-getting-started",
-    "./skills/dotnet/dotnet-client-initialization",
-    "./skills/dotnet/dotnet-authentication",
-    "./skills/dotnet/dotnet-calling-endpoints",
-    "./skills/dotnet/dotnet-models",
-    "./skills/dotnet/dotnet-error-handling",
-    "./skills/dotnet/dotnet-configuration-resilience",
-    "./skills/dotnet/dotnet-testing",
-    "./skills/python/python-integrate-paypal",
-    "./skills/python/python-getting-started",
-    "./skills/python/python-client-initialization",
-    "./skills/python/python-authentication",
-    "./skills/python/python-calling-endpoints",
-    "./skills/python/python-models",
-    "./skills/python/python-error-handling",
-    "./skills/python/python-configuration-resilience",
-    "./skills/python/python-testing",
-    "./skills/typescript/typescript-integrate-paypal",
-    "./skills/typescript/typescript-paypal-getting-started",
-    "./skills/typescript/typescript-client-initialization",
-    "./skills/typescript/typescript-authentication",
-    "./skills/typescript/typescript-calling-endpoints",
-    "./skills/typescript/typescript-models",
-    "./skills/typescript/typescript-error-handling",
-    "./skills/typescript/typescript-configuration-resilience",
-    "./skills/typescript/typescript-testing"
+    "./skills/dotnet",
+    "./skills/python",
+    "./skills/typescript"
   ]
 }

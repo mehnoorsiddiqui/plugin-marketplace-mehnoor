@@ -32,6 +32,11 @@
       "description": "Install and consume the PayPal .NET SDK, grounded in a bundled SDK map. A single paypal-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-paypal router + the paypal-sdk agent. No MCP server."
     },
     {
+      "name": "shutterstock",
+      "source": "./plugins/shutterstock",
+      "description": "Install and consume the Shutterstock .NET SDK, grounded in a bundled SDK map. A single shutterstock agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the dotnet-integrate-shutterstock router + the shutterstock agent. No MCP server."
+    },
+    {
       "name": "twilio-sdk",
       "source": "./plugins/twilio-sdk",
       "description": "Install and consume the Twilio .NET SDK, grounded in a bundled SDK map. A single twilio-sdk agent plans a map-grounded contract sheet, answers narrow contract questions, and fixes SDK compile/build errors in place \u2014 cloning the SDK source only when the map cannot settle a fact. Includes the integrate-twilio router + the twilio-sdk agent. No MCP server."
